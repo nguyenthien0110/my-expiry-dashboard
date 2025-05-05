@@ -1,17 +1,8 @@
+import { Event } from "@/app/page";
 import clsx from "clsx";
 import { CiEdit } from "react-icons/ci";
 
-function ItemExpiry({
-  title,
-  activationDate,
-  durationInDays,
-  active,
-}: {
-  title: string;
-  activationDate: string;
-  durationInDays: string;
-  active?: boolean | false;
-}) {
+function ItemExpiry({ prop }: { prop: Event }) {
   return (
     <>
       <div className="h-24 w-96 bg-white border rounded-2xl relative">
@@ -23,20 +14,20 @@ function ItemExpiry({
         <div className="h-full w-full rounded-2xl">
           <div className="w-full h-14 rounded-tl-2xl flex items-center">
             <div className="w-3/4 pt-2 pl-4">
-              <p className="text-xl">{title}</p>
-              <span>Create at: {activationDate}</span>
+              <p className="text-xl">{prop.name}</p>
+              <span>Create at: {prop.activationDate}</span>
             </div>
             <div className="h-full w-2/4 flex items-center justify-center">
               <div
                 className={clsx(
                   `border border-amber-50 rounded-[8px]`,
-                  active == true
+                  prop.active === "TRUE"
                     ? "bg-green-300 text-green-600"
                     : "bg-red-300 text-red-600"
                 )}
               >
                 <span className="px-2 py-6 select-none">
-                  Còn {durationInDays} ngày
+                  Còn {prop.durationInDays} ngày
                 </span>
               </div>
             </div>
