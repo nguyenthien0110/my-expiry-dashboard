@@ -18,9 +18,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_EVENT_API}?id=${process.env.NEXT_PUBLIC_SHEET_ID}&sheet=${process.env.NEXT_PUBLIC_SHEER_NAME}`
-        );
+        const response = await fetch("api/get-sheet");
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
